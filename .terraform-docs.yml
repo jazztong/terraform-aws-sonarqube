@@ -1,0 +1,50 @@
+formatter: markdown table # Choose a formatter as per your requirement
+
+version: "0.17.0" # Specify the version of terraform-docs you are using
+
+header-from: main.tf # Include header from main.tf if needed
+footer-from: "" # No footer specified
+
+recursive:
+  enabled: true # Enable recursive processing of modules
+  path: modules # Path to the modules directory
+
+sections:
+  hide: [] # Sections to hide, e.g., ["inputs", "outputs"]
+  show: [] # Sections to show explicitly
+
+  hide-all: false # Deprecated setting
+  show-all: false # Deprecated setting
+
+content: "" # Additional content to include in the documentation
+
+output:
+  file: "README.md" # Output file for the documentation
+  mode: inject # Mode to inject documentation into the file
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false # Include output values in the documentation
+  from: "" # No specific source file for output values (ensure this is left blank)
+
+sort:
+  enabled: true # Enable sorting of documentation sections
+  by: name # Sort by name
+
+settings:
+  anchor: true # Enable anchors for section headers
+  color: true # Enable color in the output
+  default: true # Include default values
+  description: true # Include descriptions
+  escape: true # Escape special characters
+  hide-empty: false # Do not hide empty sections
+  html: true # Enable HTML in the output
+  indent: 2 # Indentation level for nested sections
+  lockfile: true # Use lockfile for dependencies
+  read-comments: true # Read comments from Terraform files
+  required: true # Mark required inputs and outputs
+  sensitive: true # Mark sensitive inputs and outputs
+  type: true # Include types of inputs and outputs
